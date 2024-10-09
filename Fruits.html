@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Membership Form</title>
+    <style>
+        body, html {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0fff0; /* Light green to reflect the fruit theme */
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border: 2px solid #000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #FFA07A; /* Light salmon color */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #FF6347; /* Tomato color for hover */
+        }
+
+        .acknowledgment {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <form action="mailto:membership@fruitlovers.com" method="post" enctype="text/plain" id="fruitMembershipForm">
+            <div class="form-group">
+                <label for="fruitLoverName">Your Favorite Fruit:</label>
+                <input type="text" name="fruitLoverName" id="fruitLoverName" value="e.g. Mango" onfocus="this.value=''">
+            </div>
+            <div class="form-group">
+                <label for="fruitLoverEmail">Email:</label>
+                <input type="email" name="fruitLoverEmail" id="fruitLoverEmail" value="Your email here" onfocus="this.value=''">
+            </div>
+            <input type="submit" value="Join the Fruit Club" onclick="validateFruitForm(); return false;">
+        </form>
+        <div id="acknowledgment" class="acknowledgment"></div>
+    </div>
+
+    <script>
+        // Function that runs when the Submit button is clicked
+        function validateFruitForm() {
+            // Check that a fruit name has been entered
+            var validateFruitName = document.getElementById("fruitLoverName").value;
+            if (validateFruitName === "e.g. Mango" || validateFruitName === "") {
+                alert("Please enter your favorite fruit");
+                return false;
+            }
+
+            // Check that the email is in a valid format
+            var validateFruitEmail = document.getElementById("fruitLoverEmail").value;
+            if (!(validateFruitEmail.includes("@") && validateFruitEmail.includes("."))) {
+                alert("Not a valid email format");
+                return false;
+            }
+
+            // If validation passes, display the acknowledgment message
+            document.getElementById("acknowledgment").innerHTML = "<h2>Thanks for Joining the Fruit Club!</h2>";
+        }
+    </script>
+
+</body>
+</html>
